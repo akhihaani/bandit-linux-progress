@@ -1,0 +1,384 @@
+Script started on 2025-09-03 16:01:38+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="25"]
+[?2004h]0;akhihaani@akhihaani: ~/bandit-linux-progress/levels[01;32makhihaani@akhihaani[00m:[01;34m~/bandit-linux-progress/levels[00m$ ssh -i bandit17.key bandit17 @bandit[K[Kit.labs.overthewire.org -p 2220
+[?2004lConnection closed by 56.228.72.241 port 2220
+[?2004h]0;akhihaani@akhihaani: ~/bandit-linux-progress/levels[01;32makhihaani@akhihaani[00m:[01;34m~/bandit-linux-progress/levels[00m$ chmod 600 bandit17.jey[K[K[Kkey
+[?2004l[?2004h]0;akhihaani@akhihaani: ~/bandit-linux-progress/levels[01;32makhihaani@akhihaani[00m:[01;34m~/bandit-linux-progress/levels[00m$ ssh -i bandit17.key bandit17 @bandit.labs.overthei[Kwire.org -p 2220
+[?2004l                         _                     _ _ _   
+                        | |__   __ _ _ __   __| (_) |_ 
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_ 
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+                                                       
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-1
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ pwd
+[?2004l/home/bandit17
+[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ ls -a
+[?2004l[0m[01;34m.[0m   .bandit16.password  .bashrc        [00;90mpasswords.old[0m  [01;34m.ssh[0m
+[01;34m..[0m  .bash_logout        passwords.new  .profile
+[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ cat passwords.od[Kld
+[?2004lIpKxcESNDhKAsZ9ZJk39uIR0BleOIs5o
+ZHEai92Y2AJlYV2OlmzFLBdzWpNUOtCx
+oM9jFfXXkVtQtqhF9NJF4C9wZGDxoz9w
+KsdjBqXY3H1iJlWybJ5Srl7Onk0OzX0S
+GMoB3KlezjA6lnxximI6khpE1ZXG5Er6
+AbuNMg1LDqNqq1thJyQIS8KKU1Z88VrB
+hxUWygAYj3q6azOoxswPGdFsHLmX6XXE
+0wkEVWDFIk2zuvFlHM0ufAhIsKMSMj7m
+8Vbr54FPfe23qdSjagYmOkUQS4v5BM1A
+fksUg62OIIIOI5qxtEqs3z1bQAL9gWsJ
+QDfajbyiL2DI9J6AfRCo0EcGxhRshb2J
+oWF3KEgMjm0J2KU9sRxK02e4FoqV5nrJ
+fswH0qIBhzoPtECOqwnRLnghsUha2090
+AyhJ6PsGgtwQHcedAbGIpecfBFB8R51E
+oTUYBv4NGYjGiWvk8npnL5312PI56hxn
+uRRIXulnCUZrwem2c6BqyYAkLXVYZXSa
+xR4q3x67eHx0kopP5hcUUhQjlAjnhBE4
+5459iF2U2D6uCmjV2QcsBm1MvhpvzRqG
+AT2hPKiCu8N6grkiUV2HM9iIu8H8w4UZ
+C20Zet3hyrxYbEAhzFvXsFTamXloBz2O
+Kh08mlM2Cs7gi4F44dzkhx4rcHsoIewu
+UIsKP4AtnUplAOPLAhXScotJeDA1nYwl
+jLlVtPbQXGOjR2xi7REgsgoXHRYfJqCh
+MMKss4ZA8zNjMyKVXBWxqLf8TvPN9vUc
+Pg3OniNGK2Hwzrkz2gBnHx7UL6riGizB
+TFDQ64BqbtBMSekQLOvo8etAIUkI4IoS
+uXcLyg0V9wyMujsN1EqX6PSn2janxzIN
+BDtU9tJ9mNG91Deiwwk4Gv06y3OakizT
+KzMVgyRyCJSTAItlkqBO6OzaIL5rQ95R
+nhHwlyXjNRbOs7rRMi3G4xs045D0B90L
+8ZOF0v3fh1PhwVkqwKOGoD2CffAPOlCu
+abutSNA78j5UWXhxXqMhr1rO7hcSISPW
+rYDumo0OQJuLxSWNRwbW0q3qAutCBqtj
+bQHE0uuPSC8iiXuwmSJJQZ9ewGBJxoSg
+6iry5biGBQhOKV1x2kDqL3vSnIlnQsFd
+XQ5xBu8y7KVPjiIawxoFhEisWKwHaTOq
+LZa5tpjSCQKOCQ5l30uFR8UdGH41tiVd
+slLVdjMenbaQOC9fIKFQSA5Kfwr6oYIV
+aWupPp43nIvJH0JLs4keOj0nHLy8KROf
+LEPQau3PJ3oV3ovxQZoBv7BaNM0Ph3I2
+iGbToMuVump0ASiWIJdrwKQSXhSgyK4w
+CgmS55GVlEKTgx8xpW8HuWnHlBKP924b
+KrGnm2FML9aEaLxuYVZfIQVYBfrKVVhQ
+A0AwBAziY854CevtUEbjCXcwPaTXIgow
+ltSIfBAqpLUG5MMzWJUozlC7ZgDuSSEr
+eplYeS11XumKc3QAj7MkrvhwHKC3wE3M
+YzcGpY0gGjfDv39o5XBOCvZBwCwjqNcM
+ztL4EFiFmK9Zsk4FWWEVIFt8oZpgD52j
+MTY0VaCFxBvy4e9L3Z4iODCxMHWiSc7U
+Vzcx5YjOlpCBNHZOsnJegWWnVuMvu6Sp
+t2TLDrnzLM837bu1p1cp2SXUNGKumDkP
+QBsr40LHPesmn1IngxcwR5X92r5r9RSX
+0mWWsdejb9vKc05btghCCbC9JnoRGPpd
+lsaUmdjls6pyirilYXKlDiZMfOMpEbCa
+mqnh2gXPegNNNfpjCFXJjAfGEqGtjTDm
+tFx48A9DFjJJVJKMgeZ9uA1OovNNG5IJ
+MX7ntclTIhkQhl09DMmymHmWADNVFTrq
+ZlkkrfLV706GsY7CX6n3Tob3nW9BAoO8
+5Ne5s8yQQuV8bpj4qQrLWvBt0JD2JEXP
+noWPWhVInRJFQhZEhD2RSswT2OYcoGKa
+fgPYyDPnudJSD8I8V8C4Mkdne9gOLJU0
+8VU7MNZFM6D0S17QsM9jjZ9Su7wulm8Q
+mD5kPViCJS7S88QykFFH27J1sePAnPIj
+cTEbSerOBFmIu6nOv2oIs4torqK8xe3t
+G3B7DjaDGiXovh5iwYRUsVUUHFqvQbRi
+L6jBiXA1uIJAsAWAiwHBCcVQ4nOaO04V
+5vUsIV9Rpn2jaxuZHgk3KIZUc2yaFuw4
+ei1615GP3gWqaAEGS9jQigFTRx6LYkpf
+z9j4uC45hOQtwTF3nNHCbl6A0QwDgSo4
+tHjcPw5iPgZxNiNh0aWXlEJ0Slmm7Rxu
+eT0fFaKvxgvkOCg5xuVIAM1ZPxkx8bQ1
+kBOcxiSloHcsBnYP0RovuAmeeo4WrLOP
+majS3Mb7XG1N0Gnz4NxDmH4u50Dy6xh4
+lkdpt9zbL580AzeJLBc2cPxkM08y1lxN
+L0iQCIViZTJn5ypDsMUSVaoZlb46P8Ij
+NrqE6m956eAwjyBs63J2xxTW6VOd5WcY
+sjAxReIFWn4Au88jIzVeoHmlKVMjFfFt
+U73U3Mmkz94j11FHhFnbymKhHtOUm5TH
+wuqMjRpfCtsvQZYTASScmsi01ec5FygR
+kS1lhbbtuhjs12zYPp5WLUqPwEOVN07h
+99YSrM4LZzEJ0RyAWVxD8Ps0tA5JSGEx
+XuDuuPEOLU8QeF8nDN7kQgRozN0or9Mc
+8fT0GwsghR5rdjvjsAEI5ac2lBQrUXwQ
+RaFMUgS8v0yi5Mkxe62VJ1tsXl4aCemM
+pndKLWA1e0HMCPy1EFrZhLrZpZYqHu22
+yYPccseHY29cCdUXkTZbRg9H6KlLpktY
+WghXipBACmQyYWJUVDyVo7qvQCYWxpXh
+wxvfC3ZtGhDcR5nwFG9UF3GLbUcPchAs
+TDcTBg4c6dxYHI2b5ocrLwD1fYhQstWP
+UXDfyX1CRdHbnn9c33y8j2hmQAJBHrYW
+VhjwKqbn7sVW1zaR2rtSWGWP4KAcFOdv
+x0WJ7aPb2j7zaRY7GN43NhqvcaDI6t2M
+Qh57VvzKgl3ht6z1Ee27aPez8RpgnXqo
+cvmacSQb1V9NL7APGqDm7vY70MolsCGK
+wF771Q5dPEJsGuO3ZN04kZTTusPGUbIL
+66J0CJTKZx24BXHPWYMNQnsO9wIqm3ac
+X9ten3YgvXRohP0rND1c7o0nxpxRS0bk
+C6MLys1DUeWlCY8f7ToRRaGUnW7kSA2j
+EbiJXElDtdSGcTLy2NHAmkkFmW9LQXmG
+kIeEjEu0emYC4oeZ4pHUnFzKcRVwIvkI
+[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ passwords[K[K[K[K[K[K[K[K[Kcat passwords.m[Knew
+[?2004lIpKxcESNDhKAsZ9ZJk39uIR0BleOIs5o
+ZHEai92Y2AJlYV2OlmzFLBdzWpNUOtCx
+oM9jFfXXkVtQtqhF9NJF4C9wZGDxoz9w
+KsdjBqXY3H1iJlWybJ5Srl7Onk0OzX0S
+GMoB3KlezjA6lnxximI6khpE1ZXG5Er6
+AbuNMg1LDqNqq1thJyQIS8KKU1Z88VrB
+hxUWygAYj3q6azOoxswPGdFsHLmX6XXE
+0wkEVWDFIk2zuvFlHM0ufAhIsKMSMj7m
+8Vbr54FPfe23qdSjagYmOkUQS4v5BM1A
+fksUg62OIIIOI5qxtEqs3z1bQAL9gWsJ
+QDfajbyiL2DI9J6AfRCo0EcGxhRshb2J
+oWF3KEgMjm0J2KU9sRxK02e4FoqV5nrJ
+fswH0qIBhzoPtECOqwnRLnghsUha2090
+AyhJ6PsGgtwQHcedAbGIpecfBFB8R51E
+oTUYBv4NGYjGiWvk8npnL5312PI56hxn
+uRRIXulnCUZrwem2c6BqyYAkLXVYZXSa
+xR4q3x67eHx0kopP5hcUUhQjlAjnhBE4
+5459iF2U2D6uCmjV2QcsBm1MvhpvzRqG
+AT2hPKiCu8N6grkiUV2HM9iIu8H8w4UZ
+C20Zet3hyrxYbEAhzFvXsFTamXloBz2O
+Kh08mlM2Cs7gi4F44dzkhx4rcHsoIewu
+UIsKP4AtnUplAOPLAhXScotJeDA1nYwl
+jLlVtPbQXGOjR2xi7REgsgoXHRYfJqCh
+MMKss4ZA8zNjMyKVXBWxqLf8TvPN9vUc
+Pg3OniNGK2Hwzrkz2gBnHx7UL6riGizB
+TFDQ64BqbtBMSekQLOvo8etAIUkI4IoS
+uXcLyg0V9wyMujsN1EqX6PSn2janxzIN
+BDtU9tJ9mNG91Deiwwk4Gv06y3OakizT
+KzMVgyRyCJSTAItlkqBO6OzaIL5rQ95R
+nhHwlyXjNRbOs7rRMi3G4xs045D0B90L
+8ZOF0v3fh1PhwVkqwKOGoD2CffAPOlCu
+abutSNA78j5UWXhxXqMhr1rO7hcSISPW
+rYDumo0OQJuLxSWNRwbW0q3qAutCBqtj
+bQHE0uuPSC8iiXuwmSJJQZ9ewGBJxoSg
+6iry5biGBQhOKV1x2kDqL3vSnIlnQsFd
+XQ5xBu8y7KVPjiIawxoFhEisWKwHaTOq
+LZa5tpjSCQKOCQ5l30uFR8UdGH41tiVd
+slLVdjMenbaQOC9fIKFQSA5Kfwr6oYIV
+aWupPp43nIvJH0JLs4keOj0nHLy8KROf
+LEPQau3PJ3oV3ovxQZoBv7BaNM0Ph3I2
+iGbToMuVump0ASiWIJdrwKQSXhSgyK4w
+x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+KrGnm2FML9aEaLxuYVZfIQVYBfrKVVhQ
+A0AwBAziY854CevtUEbjCXcwPaTXIgow
+ltSIfBAqpLUG5MMzWJUozlC7ZgDuSSEr
+eplYeS11XumKc3QAj7MkrvhwHKC3wE3M
+YzcGpY0gGjfDv39o5XBOCvZBwCwjqNcM
+ztL4EFiFmK9Zsk4FWWEVIFt8oZpgD52j
+MTY0VaCFxBvy4e9L3Z4iODCxMHWiSc7U
+Vzcx5YjOlpCBNHZOsnJegWWnVuMvu6Sp
+t2TLDrnzLM837bu1p1cp2SXUNGKumDkP
+QBsr40LHPesmn1IngxcwR5X92r5r9RSX
+0mWWsdejb9vKc05btghCCbC9JnoRGPpd
+lsaUmdjls6pyirilYXKlDiZMfOMpEbCa
+mqnh2gXPegNNNfpjCFXJjAfGEqGtjTDm
+tFx48A9DFjJJVJKMgeZ9uA1OovNNG5IJ
+MX7ntclTIhkQhl09DMmymHmWADNVFTrq
+ZlkkrfLV706GsY7CX6n3Tob3nW9BAoO8
+5Ne5s8yQQuV8bpj4qQrLWvBt0JD2JEXP
+noWPWhVInRJFQhZEhD2RSswT2OYcoGKa
+fgPYyDPnudJSD8I8V8C4Mkdne9gOLJU0
+8VU7MNZFM6D0S17QsM9jjZ9Su7wulm8Q
+mD5kPViCJS7S88QykFFH27J1sePAnPIj
+cTEbSerOBFmIu6nOv2oIs4torqK8xe3t
+G3B7DjaDGiXovh5iwYRUsVUUHFqvQbRi
+L6jBiXA1uIJAsAWAiwHBCcVQ4nOaO04V
+5vUsIV9Rpn2jaxuZHgk3KIZUc2yaFuw4
+ei1615GP3gWqaAEGS9jQigFTRx6LYkpf
+z9j4uC45hOQtwTF3nNHCbl6A0QwDgSo4
+tHjcPw5iPgZxNiNh0aWXlEJ0Slmm7Rxu
+eT0fFaKvxgvkOCg5xuVIAM1ZPxkx8bQ1
+kBOcxiSloHcsBnYP0RovuAmeeo4WrLOP
+majS3Mb7XG1N0Gnz4NxDmH4u50Dy6xh4
+lkdpt9zbL580AzeJLBc2cPxkM08y1lxN
+L0iQCIViZTJn5ypDsMUSVaoZlb46P8Ij
+NrqE6m956eAwjyBs63J2xxTW6VOd5WcY
+sjAxReIFWn4Au88jIzVeoHmlKVMjFfFt
+U73U3Mmkz94j11FHhFnbymKhHtOUm5TH
+wuqMjRpfCtsvQZYTASScmsi01ec5FygR
+kS1lhbbtuhjs12zYPp5WLUqPwEOVN07h
+99YSrM4LZzEJ0RyAWVxD8Ps0tA5JSGEx
+XuDuuPEOLU8QeF8nDN7kQgRozN0or9Mc
+8fT0GwsghR5rdjvjsAEI5ac2lBQrUXwQ
+RaFMUgS8v0yi5Mkxe62VJ1tsXl4aCemM
+pndKLWA1e0HMCPy1EFrZhLrZpZYqHu22
+yYPccseHY29cCdUXkTZbRg9H6KlLpktY
+WghXipBACmQyYWJUVDyVo7qvQCYWxpXh
+wxvfC3ZtGhDcR5nwFG9UF3GLbUcPchAs
+TDcTBg4c6dxYHI2b5ocrLwD1fYhQstWP
+UXDfyX1CRdHbnn9c33y8j2hmQAJBHrYW
+VhjwKqbn7sVW1zaR2rtSWGWP4KAcFOdv
+x0WJ7aPb2j7zaRY7GN43NhqvcaDI6t2M
+Qh57VvzKgl3ht6z1Ee27aPez8RpgnXqo
+cvmacSQb1V9NL7APGqDm7vY70MolsCGK
+wF771Q5dPEJsGuO3ZN04kZTTusPGUbIL
+66J0CJTKZx24BXHPWYMNQnsO9wIqm3ac
+X9ten3YgvXRohP0rND1c7o0nxpxRS0bk
+C6MLys1DUeWlCY8f7ToRRaGUnW7kSA2j
+EbiJXElDtdSGcTLy2NHAmkkFmW9LQXmG
+kIeEjEu0emYC4oeZ4pHUnFzKcRVwIvkI
+[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ man diff
+[?2004l[?1049h[22;0;0t[?1h=[4mDIFF[24m(1)                          User Commands                         [4mDIFF[24m(1)[m
+[m
+[1mNAME[0m[m
+       diff - compare files line by line[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mdiff [22m[[4mOPTION[24m]... [4mFILES[0m[m
+[m
+[1mDESCRIPTION[0m[m
+       Compare FILES line by line.[m
+[m
+       Mandatory  arguments  to  long  options are mandatory for short options[m
+       too.[m
+[m
+       [1m--normal[0m[m
+              output a normal diff (the default)[m
+[m
+       [1m-q[22m, [1m--brief[0m[m
+              report only when files differ[m
+[m
+       [1m-s[22m, [1m--report-identical-files[0m[m
+              report when two files are the same[m
+[m
+       [1m-c[22m, [1m-C [22mNUM, [1m--context[22m[=[4mNUM[24m][m
+[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page diff(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output NUM (default 3) lines of copied context[m
+[7m Manual page diff(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-u[22m, [1m-U [22mNUM, [1m--unified[22m[=[4mNUM[24m][m
+[7m Manual page diff(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output NUM (default 3) lines of unified context[m
+[7m Manual page diff(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-e[22m, [1m--ed[0m[m
+[7m Manual page diff(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output an ed script[m
+[7m Manual page diff(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-n[22m, [1m--rcs[0m[m
+[7m Manual page diff(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output an RCS format diff[m
+[7m Manual page diff(1) line 11 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 12 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-y[22m, [1m--side-by-side[0m[m
+[7m Manual page diff(1) line 13 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output in two columns[m
+[7m Manual page diff(1) line 14 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-W[22m, [1m--width[22m=[4mNUM[0m[m
+[7m Manual page diff(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output at most NUM (default 130) print columns[m
+[7m Manual page diff(1) line 17 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 18 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--left-column[0m[m
+[7m Manual page diff(1) line 19 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              output only the left column of common lines[m
+[7m Manual page diff(1) line 20 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 21 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--suppress-common-lines[0m[m
+[7m Manual page diff(1) line 22 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              do not output common lines[m
+[7m Manual page diff(1) line 23 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 24 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-p[22m, [1m--show-c-function[0m[m
+[7m Manual page diff(1) line 25 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              show which C function each change is in[m
+[7m Manual page diff(1) line 26 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 27 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-F[22m, [1m--show-function-line[22m=[4mRE[0m[m
+[7m Manual page diff(1) line 28 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              show the most recent line matching RE[m
+[7m Manual page diff(1) line 29 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--label [22mLABEL[m
+[7m Manual page diff(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              use LABEL instead of file name and timestamp (can be repeated)[m
+[7m Manual page diff(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-t[22m, [1m--expand-tabs[0m[m
+[7m Manual page diff(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              expand tabs to spaces in output[m
+[7m Manual page diff(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m-T[22m, [1m--initial-tab[0m[m
+[7m Manual page diff(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              make tabs line up by prepending a tab[m
+[7m Manual page diff(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--tabsize[22m=[4mNUM[0m[m
+[7m Manual page diff(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K              tab stops every NUM (default 8) print columns[m
+[7m Manual page diff(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page diff(1) line 42 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--suppress-blank-empty[0m[m
+[7m Manual page diff(1) line 43 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0t[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ diff passwords.old passwords.new
+[?2004l42c42
+< CgmS55GVlEKTgx8xpW8HuWnHlBKP924b
+---
+> x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+[?2004h]0;bandit17@bandit: ~[01;32mbandit17@bandit[00m:[01;34m~[00m$ exit
+[?2004llogout
+Connection to bandit.labs.overthewire.org closed.
+[?2004h]0;akhihaani@akhihaani: ~/bandit-linux-progress/levels[01;32makhihaani@akhihaani[00m:[01;34m~/bandit-linux-progress/levels[00m$ exit
+[?2004lexit
+
+Script done on 2025-09-03 16:08:02+00:00 [COMMAND_EXIT_CODE="1"]
